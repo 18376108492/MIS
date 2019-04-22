@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.stxy.one.mapper.DepartmentMapper">
+
+    <!--获取所有部门-->
+    <select id="getDepartment" resultType="net.stxy.one.model.Department">
+        SELECT
+	id,
+	NAME
+FROM
+	department
+    </select>
+
+    <!--根据部门id获取其子部门-->
+    <select id="getDepartmentSecond" parameterType="java.lang.Integer" resultType="net.stxy.one.model.Department_second">
+      SELECT
+	id,
+	NAME
+FROM
+	department_second
+WHERE
+	department_id =#{parentID}
+    </select>
+</mapper>
